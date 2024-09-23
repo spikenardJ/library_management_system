@@ -5,14 +5,19 @@ import library_book_operations
 import library_user_operations
 import library_author_operations
 
-library = {}
-authors = {}
-users = {}
-current_loans = {}
-books_by_author = {}
+# library = {}
+# authors = {}
+# users = {}
+# current_loans = {}
+# books_by_author = {}
 
 
 def main():
+    library = {}
+    authors = {}
+    users = {}
+    current_loans = {}
+    books_by_author = {}
     book_operations = library_book_operations.BookOperations(library, current_loans)
     user_operations = library_user_operations.UserOperations(users)
     author_operations = library_author_operations.AuthorOperations(authors)
@@ -26,11 +31,14 @@ def main():
                 print(colored("\n1. Add a new book \n2. Borrow a book \n3. Return a book \n4. Search for a book \n5. Display all books \n6. Quit\n", "dark_grey"))
                 choice = input("Enter your choice: ")
                 if choice == "1":
-                    book_operations.add_book()
+                    updated = book_operations.add_book()
+                    library = updated
                 elif choice == "2":
-                    book_operations.checkout_book() 
+                    updated = book_operations.checkout_book()
+                    library = updated 
                 elif choice == "3":
-                    book_operations.checkin_book()
+                    updated = book_operations.checkin_book()
+                    library = updated
                 elif choice == "4":
                     book_operations.search_book()
                 elif choice == "5":

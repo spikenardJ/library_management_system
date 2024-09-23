@@ -29,6 +29,10 @@ class Book:
     def display_book_information(self):
         print(colored(f"\nTitle: {self.title}", "cyan", attrs=["bold"]))
         print(colored(f"Author: {self.author} \nGenre: {self.genre} \nISBN: {self.isbn} \nPublication Date: {self.publication_date}", "grey"))
+        if self.get_availability() == True:
+            print(colored("Availability: Available", "grey"))
+        else:
+            print(colored("Availability: Borrowed", "grey"))
         print(colored("-------------", "grey"))
 
 class BookOperations:
@@ -75,7 +79,7 @@ class BookOperations:
                 book.display_book_information()
 
     def checkout_book(self):
-        # user = library_user_operations.User.set_books_borrowed(self)
+        users_books = library_user_operations.User.set_books_borrowed()
         print(colored("\nLibrary Books:", "white", attrs=["bold"]))
         for book in self.library.values():
             book.display_book_information()
@@ -83,11 +87,13 @@ class BookOperations:
         user = input("\nEnter name of user: ").title()
         found = False
         for book in self.library.values():
+            print(book)
             if title == book.get_title() and book.get_availability():
                 self.current_loans[title] = user
                 book.change_book_status()
-                # user.append.new_books_borrowed(self)
-                print(colored(f"\nBook {book.get_title()} borrowed by {user}.", "grey"))
+                print(user)
+                users_books.append.books_borrowed(book)
+                print(colored(f"\nBook {book.get_title()} borrowed successfully by {user}.", "grey"))
                 found = True
                 break
         if not found:
@@ -102,7 +108,7 @@ class BookOperations:
             if title == book.get_title() and not book.get_availability():
                 del self.current_loans[title]
                 book.change_book_status()
-                print(colored(f"\nBook {book.get_title()} returned from {user}.", "grey"))
+                print(colored(f"\nBook {book.get_title()} returned successfully from {user}.", "grey"))
                 found = True
                 break
         if not found:

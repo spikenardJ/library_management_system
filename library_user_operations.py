@@ -12,7 +12,7 @@ class User:
         self.__user_phone_number = user_phone_number
         self.__user_email = user_email
         self.__user_library_id = user_library_id
-        self.__books_borrowed = []
+        self.books_borrowed = []
 
     def get_user_name(self):
         return self.user_name
@@ -27,10 +27,10 @@ class User:
         return self.__user_library_id
     
     def get_books_borrowed(self):
-         return self.__books_borrowed
+        return self.books_borrowed
     
-    def set_books_borrowed(self, new_books_borrowed):
-         self.__books_borrowed = new_books_borrowed
+    def set_books_borrowed(self):
+        return self.books_borrowed
     
     def view_user_details(self):
         print(colored(f"\nName: {self.user_name}", "cyan", attrs=["bold"]))
