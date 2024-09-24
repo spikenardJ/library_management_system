@@ -1,7 +1,6 @@
 # Library Book Operations
 
 from termcolor import colored
-import library_user_operations
 
 users = {}
 
@@ -50,14 +49,7 @@ class BookOperations:
         self.library[isbn] = book
         print("Book added successfully.")
         return self.library
-        # with open("libray.txt", "w") as file:
-        #     for book, data in library.items():
-        #         file.write(f"{book}: {data}\n")
-        # books_by_author = [title, ]
-        # with open("authors.txt", "a") as file:
-        #     for title in books_by_author:
-        #         file.write(f"\n{title}")
-
+    
     def search_book(self):
         title = input("\nEnter the book title to search: ").title()
         found = False
@@ -79,7 +71,6 @@ class BookOperations:
                 book.display_book_information()
 
     def checkout_book(self):
-        users_books = library_user_operations.User.set_books_borrowed()
         print(colored("\nLibrary Books:", "white", attrs=["bold"]))
         for book in self.library.values():
             book.display_book_information()
@@ -92,7 +83,6 @@ class BookOperations:
                 self.current_loans[title] = user
                 book.change_book_status()
                 print(user)
-                users_books.append.books_borrowed(book)
                 print(colored(f"\nBook {book.get_title()} borrowed successfully by {user}.", "grey"))
                 found = True
                 break

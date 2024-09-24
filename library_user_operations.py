@@ -1,9 +1,6 @@
 # Library User Operations
 
-# library_users = users()
-
 from termcolor import colored
-import library_book_operations
 import re
 
 class User:
@@ -12,7 +9,6 @@ class User:
         self.__user_phone_number = user_phone_number
         self.__user_email = user_email
         self.__user_library_id = user_library_id
-        self.books_borrowed = []
 
     def get_user_name(self):
         return self.user_name
@@ -35,8 +31,6 @@ class User:
     def view_user_details(self):
         print(colored(f"\nName: {self.user_name}", "cyan", attrs=["bold"]))
         print(colored(f"Phone: {self.__user_phone_number} \nEmail: {self.__user_email} \nLibraray ID: {self.__user_library_id}", "grey"))
-        print(colored("Books Borrowed:", "cyan"))
-        print(colored(f"{self.__books_borrowed}", "grey"))
         print(colored("-------------", "grey"))
 
 class UserOperations:

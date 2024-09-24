@@ -5,19 +5,11 @@ import library_book_operations
 import library_user_operations
 import library_author_operations
 
-# library = {}
-# authors = {}
-# users = {}
-# current_loans = {}
-# books_by_author = {}
-
-
 def main():
     library = {}
     authors = {}
     users = {}
     current_loans = {}
-    books_by_author = {}
     book_operations = library_book_operations.BookOperations(library, current_loans)
     user_operations = library_user_operations.UserOperations(users)
     author_operations = library_author_operations.AuthorOperations(authors)
